@@ -1,29 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-<script>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <h1>⛅ Weather App 🌩️</h1>
 
-  async function getContent() {
-    
-    try {
-      const response = await fetch('http://localhost:3333/')
-      // console.log(response)
-      const data = await response.json()
-      console.log(data);
-      
-    } catch (error) {
-      console.log(error)
+    <label for="city">Digite o nome da cidade:</label>
+    <input type="text" id="textbox" name="city" />
+    <button id="submitButton" onclick="success()" value="Show Alert">
+      Pesquisar
+    </button>
+  </body>
+  <script>
+    function success() {
+      alert("✅ Cidade enviada com sucesso!");
     }
-  }
 
-  getContent()
+    const submitButton = document.getElementById("submitButton");
+    const textbox = document.getElementById("textbox");
 
-</script>
+    submitButton.addEventListener("click", () => {
+
+      const text = textbox.value;
+
+      // Envia para o backend usando fetch
+      fetch("http://localhost:3333/sendText", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cityText: text }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Resposta do backend:", data);
+        })
+        .catch((error) => {
+          console.error("Erro:", error);
+        });
+    });
+
+  </script>
 </html>
