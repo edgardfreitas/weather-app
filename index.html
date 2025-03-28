@@ -8,11 +8,11 @@
   <body>
     <h1>⛅ Weather App 🌩️</h1>
 
-    <label for="city">Digite o nome da cidade:</label>
-    <input type="text" id="textbox" name="city" />
-    <button id="submitButton" onclick="success()" value="Show Alert">
-      Pesquisar
-    </button>
+    <form>
+      <input type="text" id="textbox" name= city placeholder="Digite o nome da cidade" autofocus />
+      <button type="submit" id="submitButton" onclick="success()" value="Show Alert">Pesquisar</button>
+    </form>
+
   </body>
   <script>
     function success() {
