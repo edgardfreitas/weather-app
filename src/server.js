@@ -41,6 +41,7 @@ app.get("/", async (request, response) => {
 
     response.json({
       message: "Os dados da cidade foram buscados com sucesso",
+      textReceived: cityName,
       locationKey: cityKey,
     });
   } catch (error) {
