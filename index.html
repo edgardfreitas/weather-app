@@ -10,23 +10,37 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <style>
-      /* Background azul em degradê */
-      body {
-          background: linear-gradient(to bottom, #0000ff, #87cefa); /* Degradê do azul escuro para o azul claro */
-          min-height: 100vh; /* Garante que o background cubra toda a altura da tela */
-      }
-      p {
-            font-size: 32px; /* Tamanho fixo de 36px */
-      }
-  </style>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-    
-    <div class="card shadow-lg p-4" style="width: 30rem;">
-    <form class="text-center">
-      <p class="card-title">⛅ <b>Weather App</b> 🌩️</p>
-      
+  <body
+    class="d-flex align-items-center justify-content-center"
+  >
+    <div id="background-wrap">
+      <div class="x1">
+        <div class="cloud"></div>
+      </div>
+
+      <div class="x2">
+        <div class="cloud"></div>
+      </div>
+
+      <div class="x3">
+        <div class="cloud"></div>
+      </div>
+
+      <div class="x4">
+        <div class="cloud"></div>
+      </div>
+
+      <div class="x5">
+        <div class="cloud"></div>
+      </div>
+    </div>
+
+    <div class="card shadow-lg p-4" style="width: 30rem">
+      <form class="text-center">
+        <p class="card-title">⛅ <b>Weather App</b> 🌩️</p>
+
         <input
           type="text"
           class="form-control my-3"
@@ -45,9 +59,7 @@
         >
           Pesquisar
         </button>
-      
-    </form>
-    
+      </form>
     </div>
 
     <script
