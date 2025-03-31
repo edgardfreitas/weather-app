@@ -52,12 +52,13 @@ app.get("/", async (request, response) => {
   }
 });
 
-app.get("/1day", async (request, response) => {
+app.get("/currentconditions", async (request, response) => {
   try {
+    
     const cityWeatherInformation = await axios.get(
-      `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${process.env.APIKEY}`
+      `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${process.env.APIKEY}`
     );
-
+    
     cityWeather = cityWeatherInformation.data;
 
     response.json({
