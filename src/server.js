@@ -52,7 +52,7 @@ app.get("/", async (request, response) => {
   }
 });
 
-app.get("/currentconditions", async (request, response) => {
+app.get("/getWeather", async (request, response) => {
   try {
     
     const cityWeatherInformation = await axios.get(
