@@ -43,6 +43,10 @@ document.getElementById("submitButton").addEventListener("click", () => {
             return "Noite 🌜";
           }
         }
+        const cityMessage = `${weatherData.locationData}, ${weatherData.locationCountry}`;
+        document.getElementById("displayCityText").textContent =
+          cityMessage;
+
         const dayTimeMessage = `${isDayTime()}`;
         document.getElementById("displayDayTimeText").textContent =
           dayTimeMessage;

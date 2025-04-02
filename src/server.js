@@ -8,6 +8,8 @@ const app = express();
 let cityKey = null;
 let cityWeather = null;
 let cityName = null;
+let cityData = null;
+let cityCountry = null;
 
 app.use(cors());
 app.use(express.json());
@@ -38,11 +40,15 @@ app.get("/", async (request, response) => {
     );
 
     cityKey = cityInformation.data[0].Key;
+    cityData = cityInformation.data[0].EnglishName;
+    cityCountry = cityInformation.data[0].Country.EnglishName;
 
     response.json({
       message: "Os dados da cidade foram buscados com sucesso",
       textReceived: cityName,
       locationKey: cityKey,
+      locationData: cityData,
+      locationCountry: cityCountry
     });
   } catch (error) {
     response.status(500).json({
@@ -63,6 +69,8 @@ app.get("/getWeather", async (request, response) => {
 
     response.json({
       message: "Dados da cidade encontrados",
+      locationData: cityData,
+      locationCountry: cityCountry,
       weatherData: cityWeather,
     });
   } catch (error) {
