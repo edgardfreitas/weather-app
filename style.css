@@ -4,7 +4,7 @@ body {
     #0000ff,
     #87cefa
   );
-  min-height: 100vh; /* Garante que o background cubra toda a altura da tela */
+  min-height: 100vh;
 }
 p {
   font-size: 1.75em;

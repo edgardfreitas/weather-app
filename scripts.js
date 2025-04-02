@@ -6,7 +6,6 @@ document.getElementById("submitButton").addEventListener("click", () => {
     return;
   }
 
-  // 1️⃣ Enviar o nome da cidade para o backend
   fetch("http://localhost:3333/sendText", {
     method: "POST",
     headers: {
@@ -18,7 +17,6 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((data) => {
       console.log("Cidade enviada:", data.textReceived);
 
-      // 2️⃣ Buscar a chave da cidade (cityKey)
       return fetch("http://localhost:3333/");
     })
     .then((response) => response.json())
@@ -30,7 +28,6 @@ document.getElementById("submitButton").addEventListener("click", () => {
       console.log("Cidade encontrada:", cityData.textReceived);
       console.log("Chave da cidade:", cityData.locationKey);
 
-      // 3️⃣ Agora buscar o clima da cidade
       return fetch("http://localhost:3333/getWeather");
     })
     .then((response) => response.json())
