@@ -3,11 +3,11 @@ body {
     to bottom,
     #0000ff,
     #87cefa
-  ); /* Degradê do azul escuro para o azul claro */
+  );
   min-height: 100vh; /* Garante que o background cubra toda a altura da tela */
 }
 p {
-  font-size: 32px; /* Tamanho fixo de 36px */
+  font-size: 1.75em;
 }
 
 #background-wrap {
