@@ -1,6 +1,6 @@
 document.getElementById("submitButton").addEventListener("click", () => {
   const cityText = document.getElementById("textbox").value.trim();
-
+  
   if (!cityText) {
     alert("Digite uma cidade!");
     return;
@@ -15,6 +15,9 @@ document.getElementById("submitButton").addEventListener("click", () => {
   })
     .then((response) => response.json())
     .then((data) => {
+      document.getElementById("textCard").style.display = "none";
+      document.getElementById("loader").style.display = "block";
+
       console.log("Cidade enviada:", data.textReceived);
 
       return fetch("http://localhost:3333/");
@@ -55,7 +58,9 @@ document.getElementById("submitButton").addEventListener("click", () => {
         const weatherMessage = `${weatherData.weatherData[0].WeatherText}`;
         document.getElementById("displayWeatherText").textContent =
           weatherMessage;
+        
         document.getElementById("textCard").style.display = "block";
+        document.getElementById("loader").style.display = "none";
       } else {
         alert("Nenhuma informação de clima disponível.");
       }
