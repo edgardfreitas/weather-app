@@ -25,6 +25,8 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((response) => response.json())
     .then((cityData) => {
       if (!cityData.locationKey) {
+        document.getElementById("loader").style.display = "none";
+        alert("A cidade não foi encontrada!")
         throw new Error("Erro ao buscar a cidade. Tente novamente.");
       }
 
@@ -37,12 +39,10 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((weatherData) => {
       if (weatherData.weatherData) {
         function isDayTime() {
-          if (weatherData.weatherData[0].IsDayTime == true) {
-            return "Dia 🌞";
-          } else {
-            return "Noite 🌜";
-          }
+          if (weatherData.weatherData[0].IsDayTime == true) return "Dia 🌞";
+          return "Noite 🌜";
         }
+        
         const cityMessage = `${weatherData.locationData}, ${weatherData.locationCountry}`;
         document.getElementById("displayCityText").textContent =
           cityMessage;
@@ -62,6 +62,7 @@ document.getElementById("submitButton").addEventListener("click", () => {
         document.getElementById("textCard").style.display = "block";
         document.getElementById("loader").style.display = "none";
       } else {
+        document.getElementById("loader").style.display = "none";
         alert("Nenhuma informação de clima disponível.");
       }
     })
