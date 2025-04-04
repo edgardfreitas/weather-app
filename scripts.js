@@ -39,8 +39,7 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((weatherData) => {
       if (weatherData.weatherData) {
         function isDayTime() {
-          if (weatherData.weatherData[0].IsDayTime == true) return "Dia 🌞";
-          return "Noite 🌜";
+          return weatherData.weatherData[0].IsDayTime == true ? "Dia 🌞" : "Noite 🌜";
         }
         
         const cityMessage = `${weatherData.locationData}, ${weatherData.locationCountry}`;
