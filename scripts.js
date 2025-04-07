@@ -1,6 +1,6 @@
 document.getElementById("submitButton").addEventListener("click", () => {
   const cityText = document.getElementById("textbox").value.trim();
-  
+
   if (!cityText) {
     alert("Digite uma cidade!");
     return;
@@ -26,7 +26,7 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((cityData) => {
       if (!cityData.locationKey) {
         document.getElementById("loader").style.display = "none";
-        alert("A cidade não foi encontrada!")
+        alert("A cidade não foi encontrada!");
         throw new Error("Erro ao buscar a cidade. Tente novamente.");
       }
 
@@ -39,12 +39,17 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((weatherData) => {
       if (weatherData.weatherData) {
         function isDayTime() {
-          return weatherData.weatherData[0].IsDayTime == true ? "Dia 🌞" : "Noite 🌜";
+          return weatherData.weatherData[0].IsDayTime == true
+            ? "Dia 🌞"
+            : "Noite 🌜";
         }
         
+        if (weatherData.weatherData[0].IsDayTime == false) {
+          document.body.id = "nightBodyId";
+        }
+
         const cityMessage = `${weatherData.locationData}, ${weatherData.locationCountry}`;
-        document.getElementById("displayCityText").textContent =
-          cityMessage;
+        document.getElementById("displayCityText").textContent = cityMessage;
 
         const dayTimeMessage = `${isDayTime()}`;
         document.getElementById("displayDayTimeText").textContent =
@@ -57,7 +62,29 @@ document.getElementById("submitButton").addEventListener("click", () => {
         const weatherMessage = `${weatherData.weatherData[0].WeatherText}`;
         document.getElementById("displayWeatherText").textContent =
           weatherMessage;
+
+        function weatherIconNumber(weatherIcon) {
+          const iconNumber = Number(weatherIcon);
         
+          const validIcons = new Set([
+            1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14,
+            15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 29, 30, 31, 32, 33, 34, 35, 36,
+            37, 38, 39, 40, 41, 42, 43, 44
+          ]);
+        
+          if (validIcons.has(iconNumber)) {
+            return `assets/images/${iconNumber}.svg`;
+          } else {
+            return "assets/images/default.svg";
+          }
+        }
+
+        const iconNumber = weatherData.weatherData[0].WeatherIcon;
+        const iconPath = weatherIconNumber(iconNumber);
+        const img = document.getElementById("displayWeatherIcon");
+        img.src = iconPath;
+
         document.getElementById("textCard").style.display = "block";
         document.getElementById("loader").style.display = "none";
       } else {

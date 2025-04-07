@@ -1,8 +1,17 @@
-body {
+#dayBodyId {
   background: linear-gradient(
     to bottom,
     #0000ff,
     #87cefa
+  );
+  min-height: 100vh;
+}
+
+#nightBodyId {
+  background: linear-gradient(
+    to bottom,
+    #000000,
+    #330036
   );
   min-height: 100vh;
 }
@@ -13,6 +22,12 @@ p {
   font-weight: 300;
   font-style: normal;
   font-size: 1.8em;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .comfortaa-regular {
