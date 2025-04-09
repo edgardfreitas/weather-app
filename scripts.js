@@ -41,9 +41,11 @@ document.getElementById("submitButton").addEventListener("click", () => {
         function isDayTime () {
           if (weatherData.weatherData[0].IsDayTime == true) {
             document.body.id = "dayBodyId";
+            document.getElementById("submitButton").className = "btn btn-primary w-100";
             return "Dia 🌞";
           }
           document.body.id = "nightBodyId";
+          document.getElementById("submitButton").className = "btn btn-dark w-100";
           return "Noite 🌜";
         }
 
