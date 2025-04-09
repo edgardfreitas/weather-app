@@ -38,14 +38,13 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((response) => response.json())
     .then((weatherData) => {
       if (weatherData.weatherData) {
-        function isDayTime() {
-          return weatherData.weatherData[0].IsDayTime == true
-            ? "Dia 🌞"
-            : "Noite 🌜";
-        }
-        
-        if (weatherData.weatherData[0].IsDayTime == false) {
+        function isDayTime () {
+          if (weatherData.weatherData[0].IsDayTime == true) {
+            document.body.id = "dayBodyId";
+            return "Dia 🌞";
+          }
           document.body.id = "nightBodyId";
+          return "Noite 🌜";
         }
 
         const cityMessage = `${weatherData.locationData}, ${weatherData.locationCountry}`;
