@@ -1,6 +1,18 @@
+window.addEventListener("DOMContentLoaded", () => {
+  const savedText = localStorage.getItem("cityString");
+  if (savedText) {
+    document.getElementById("textbox").value = savedText;
+  }
+});
+
+document.getElementById("textbox").addEventListener("input", () => {
+  const currentValue = document.getElementById("textbox").value;
+  localStorage.setItem("cityString", currentValue);
+});
+
 document.getElementById("submitButton").addEventListener("click", () => {
   const cityText = document.getElementById("textbox").value.trim();
-
+  
   if (!cityText) {
     alert("Digite uma cidade!");
     return;
