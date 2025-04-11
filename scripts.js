@@ -12,7 +12,7 @@ document.getElementById("textbox").addEventListener("input", () => {
 
 document.getElementById("submitButton").addEventListener("click", () => {
   const cityText = document.getElementById("textbox").value.trim();
-  
+
   if (!cityText) {
     alert("Digite uma cidade!");
     return;
@@ -50,14 +50,34 @@ document.getElementById("submitButton").addEventListener("click", () => {
     .then((response) => response.json())
     .then((weatherData) => {
       if (weatherData.weatherData) {
-        function isDayTime () {
+        function isDayTime() {
           if (weatherData.weatherData[0].IsDayTime == true) {
             document.body.id = "dayBodyId";
-            document.getElementById("submitButton").className = "btn btn-primary w-100";
+            document.getElementById("mainCard").style.backgroundColor =
+              "#ffffff";
+            document.getElementById("textCard").style.backgroundColor =
+              "#ffffff";
+            document.getElementById("textbox").style.backgroundColor = "#ffffff";
+
+            const paragraphs = document.querySelectorAll("p");
+            paragraphs.forEach((p) => {
+              p.style.color = "#212529";
+            });
+            document.getElementById("submitButton").className =
+              "btn btn-primary w-100";
             return "Dia 🌞";
           }
+
           document.body.id = "nightBodyId";
-          document.getElementById("submitButton").className = "btn btn-dark w-100";
+          document.getElementById("mainCard").style.backgroundColor = "#282a36";
+          document.getElementById("textCard").style.backgroundColor = "#282a36";
+          document.getElementById("textbox").style.backgroundColor = "#f8f8f2";
+          const paragraphs = document.querySelectorAll("p");
+          paragraphs.forEach((p) => {
+            p.style.color = "#f8f8f2";
+          });
+          document.getElementById("submitButton").className =
+            "btn btn-secondary w-100";
           return "Noite 🌜";
         }
 
@@ -78,14 +98,13 @@ document.getElementById("submitButton").addEventListener("click", () => {
 
         function weatherIconNumber(weatherIcon) {
           const iconNumber = Number(weatherIcon);
-        
+
           const validIcons = new Set([
-            1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14,
-            15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
-            25, 26, 29, 30, 31, 32, 33, 34, 35, 36,
-            37, 38, 39, 40, 41, 42, 43, 44
+            1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+            22, 23, 24, 25, 26, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+            41, 42, 43, 44,
           ]);
-        
+
           if (validIcons.has(iconNumber)) {
             return `assets/images/${iconNumber}.svg`;
           } else {
