@@ -1,5 +1,7 @@
 # Weather App
 
+![weather_app](https://github.com/user-attachments/assets/f464fd57-ea15-42b2-a13d-817d486fc28f)
+
 **Tier:** 1-Beginner
 
 A weather application to get the temperature, weather condition and whether it is day or night of a particular city using `accuweather`. A free weather api.
