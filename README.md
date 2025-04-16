@@ -1,6 +1,6 @@
 # Weather App
 
-![weather_app](https://github.com/user-attachments/assets/f464fd57-ea15-42b2-a13d-817d486fc28f)
+[weather_app.webm](https://github.com/user-attachments/assets/39e2a1b1-b0b2-4d40-9378-2204ecf96fbe)
 
 **Tier:** 1-Beginner
 
